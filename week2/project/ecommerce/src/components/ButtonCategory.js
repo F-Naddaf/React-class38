@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import ProductsList from './ProductsList';
 
-const ButtonCategory = () => {
+const ButtonCategory = ({ setValue }) => {
   const [categories, setCategories] = useState([]);
-  const [category, setCategory] = useState('');
   useEffect(() => {
     (async () => {
       const response = await fetch(
@@ -16,7 +14,7 @@ const ButtonCategory = () => {
 
   async function getCategory(e) {
     const category = e.target.innerText;
-    setCategory(category);
+    setValue(category);
   }
   return (
     <>
@@ -31,7 +29,6 @@ const ButtonCategory = () => {
           );
         })}
       </ul>
-      <ProductsList category={category} />
     </>
   );
 };

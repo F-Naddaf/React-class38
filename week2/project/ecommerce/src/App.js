@@ -1,16 +1,15 @@
-// import { useState } from 'react';
-// import ButtonCategory from './components/ButtonCategory';
+import { useState } from 'react';
 import ButtonCategory from './components/ButtonCategory';
 import Header from './components/Header';
-// import ProductsList from './components/ProductsList';
-// import { allCategories } from './fake-data/all-categories';
-// import allProducts from './fake-data/all-products';
+import ProductsList from './components/ProductsList';
 
 function App() {
+  const [category, setCategory] = useState('');
   return (
     <header className="App">
       <Header />
-      <ButtonCategory />
+      <ButtonCategory setValue={setCategory} />
+      <ProductsList category={category} />
     </header>
   );
 }

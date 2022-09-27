@@ -30,8 +30,12 @@ const ProductsList = ({ category }) => {
           <p className="loading">Loading ...</p>
         ) : (
           products.map((product) => (
-            <Link className="product-card" to="/product:id" key={product.id}>
-              <li key={product.id}>
+            <Link
+              className="product-card"
+              to={`/product/${product.id}`}
+              key={product.id}
+            >
+              <li>
                 <div className="product">
                   <img
                     className="product-image"

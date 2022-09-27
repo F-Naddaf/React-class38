@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import ProductDetails from './components/ProductDetails';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -16,14 +17,3 @@ root.render(
 );
 
 reportWebVitals();
-
-function ProductDetails(e) {
-  const image = e.target.image;
-  console.log(image);
-  return (
-    <div>
-      <p>Hello</p>
-      <img src={image}/>
-    </div>
-  );
-}
