@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
-const ProductsList = ({ category }) => {
+const ProductsList = () => {
   let url = '';
   const [products, setProducts] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  if (category === '') {
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(false);
+  const { category } = useParams();
+
+  if (category === undefined) {
     url = 'https://fakestoreapi.com/products';
   } else {
     url = `https://fakestoreapi.com/products/category/${category}`;
@@ -18,40 +21,47 @@ const ProductsList = ({ category }) => {
         setProducts(products);
         setIsLoading(false);
       } catch (error) {
-        console.log(error);
+        setError(true);
+        setIsLoading(true);
       }
     })();
   }, [url]);
 
   return (
-    <main className="main">
-      <ul className="products">
-        {isLoading ? (
-          <p className="loading">Loading ...</p>
-        ) : (
-          products.map((product) => (
-            <Link
-              className="product-card"
-              to={`/product/${product.id}`}
-              key={product.id}
-            >
-              <li>
-                <div className="product">
-                  <img
-                    className="product-image"
-                    src={product.image}
-                    alt={product.title}
-                  />
-                  <div className="title-container">
-                    <p className="product-title">{product.title}</p>
+    <>
+      <ul className="main">
+        <div className="products">
+          {error ? (
+            <p className="error-message">Server responds with error 404!</p>
+          ) : isLoading ? (
+            <p className="loading">Loading ...</p>
+          ) : (
+            products.map((product) => (
+              <Link
+                className="product-card"
+                to={`/product/${product.id}`}
+                key={product.id}
+              >
+                <li>
+                  <div className="product">
+                    <img
+                      className="product-image"
+                      src={product.image}
+                      alt={product.title}
+                    />
+                    <div className="title-container">
+                      <p className="product-title">
+                        <strong>More about:</strong> {product.title}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              </li>
-            </Link>
-          ))
-        )}
+                </li>
+              </Link>
+            ))
+          )}
+        </div>
       </ul>
-    </main>
+    </>
   );
 };
 

@@ -15,6 +15,7 @@ code {
 
 .App {
   text-align: center;
+  width: 100%;
 }
 
 .header {
@@ -26,6 +27,10 @@ code {
   height: 70px;
   justify-content: center;
   align-items: center;
+}
+
+.header-container {
+  text-decoration: none;
 }
 
 .pink-color {
@@ -45,8 +50,11 @@ code {
 
 .category-list {
   display: flex;
+  flex-wrap: wrap;
   width: 60%;
   margin: 20px auto;
+  padding: 0;
+  justify-content: center;
 }
 
 .category-button {
@@ -72,20 +80,23 @@ code {
 }
 
 .main {
-  flex-direction: row;
-  flex-wrap: wrap;
-  min-height: 100vh;
+  display: flex;
   justify-content: center;
+  padding: 0;
+}
+
+.main .products {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  width: 80%;
+  margin: auto;
+  list-style: none;
 }
 
 .products {
-  width: 80%;
-  margin-left: 15%;
   display: flex;
   flex-wrap: wrap;
-  list-style: none;
-  justify-content: flex-start;
-  padding: 0;
 }
 
 .loading {
@@ -93,6 +104,16 @@ code {
   font-weight: bold;
   margin: auto;
   color: #ff0084;
+}
+
+.error-message {
+  color: red;
+  font-size: 24px;
+  font-weight: bold;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .product-card {
@@ -158,16 +179,15 @@ img {
 
 .item-container-child {
   position: absolute;
-  top: 25%;
+  top: 12%;
   display: flex;
+  flex-direction: column;
   width: 80%;
-  justify-content: space-between;
   align-items: center;
-
 }
 .item-image {
   right: 2%;
-  width: 40%;
+  width: 20%;
   height: fit-content;
   padding: 30px;
   background-color: white;
@@ -175,33 +195,51 @@ img {
 }
 
 .description-container {
-  width: 40%;
+  width: 90%;
 }
 
 .item-description {
-  font-size: 18px;
+  font-size: 16px;
   color: #212727;
   font-weight: 500;
-  line-height: 2;
+  margin-top: 45px;
+  padding-left: 5%;
+  line-height: 1.6;
   padding-right: 30px;
+}
+
+.product-price {
+  position: absolute;
+  left: 50%;
+  font-size: 18px;
+  font-weight: 700;
+  transform: translate(-50%);
+  color: #ff0084;
 }
 
 .back-btn {
   display: flex;
-  text-decoration: none;
-  position: absolute;
-  width: 80px;
-  height: 40px;
-  bottom: 10%;
-  background-color: #ff0084;
-  left: 10%;
+  margin-top: 55px;
   align-items: center;
   justify-content: center;
+  text-decoration: none;
 }
 
 .btn {
-  color: white;
-  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 180px;
+  height: 35px;
+  font-size: 18px;
   font-weight: bold;
-  padding-bottom: 3px;
+  border: 2px solid #0091dc;
+  color: #0091dc;
+}
+
+.btn:hover {
+  cursor: pointer;
+  background-color: rgba(255, 0, 132, 0.7);
+  border: 2px solid #ff0084;
+  color: white;
 }

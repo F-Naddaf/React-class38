@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
-const ButtonCategory = ({ setValue }) => {
+const ButtonCategory = () => {
   const [categories, setCategories] = useState([]);
   useEffect(() => {
     (async () => {
@@ -12,20 +13,16 @@ const ButtonCategory = ({ setValue }) => {
     })();
   }, []);
 
-  async function getCategory(e) {
-    const category = e.target.innerText;
-    setValue(category);
-  }
   return (
     <>
       <ul className="category-list">
-        {categories.map((category, index) => {
+        {categories.map((category) => {
           return (
-            <li className="category-button" key={index}>
-              <button className="button" onClick={getCategory}>
-                {category}
-              </button>
-            </li>
+            <Link className="category-card" to={`/${category}`} key={category}>
+              <li className="category-button">
+                <button className="button">{category}</button>
+              </li>
+            </Link>
           );
         })}
       </ul>
