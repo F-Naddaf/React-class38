@@ -1,0 +1,263 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f3f5f6;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.App {
+  text-align: center;
+  width: 100%;
+}
+
+.header {
+  background-color: black;
+  display: flex;
+  position: relative;
+  top: 0;
+  width: 100%;
+  height: 70px;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-container {
+  text-decoration: none;
+}
+
+.pink-color {
+  color: #ff0084;
+}
+
+.page-title {
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  background-color: black;
+}
+
+.blue-color {
+  color: #0091dc;
+}
+
+.category-list {
+  display: flex;
+  flex-wrap: wrap;
+  width: 60%;
+  margin: 20px auto;
+  padding: 0;
+  justify-content: center;
+}
+
+.category-button {
+  list-style: none;
+  width: calc(33% - 16px);
+  padding: 5px;
+}
+
+.button {
+  width: 180px;
+  height: 40px;
+  font-size: 14px;
+  font-weight: bold;
+  border: 2px solid #0091dc;
+  color: #0091dc;
+}
+
+.button:hover {
+  cursor: pointer;
+  background-color: rgba(255, 0, 132, 0.7);
+  border: none;
+  color: white;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+}
+
+.main .products {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  width: 80%;
+  margin: auto;
+  list-style: none;
+}
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.loading {
+  font-size: 22px;
+  font-weight: bold;
+  margin: auto;
+  color: #ff0084;
+}
+
+.error-message {
+  color: red;
+  font-size: 24px;
+  font-weight: bold;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.product-card {
+  width: 25%;
+  margin: 30px;
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.fav-icon {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  color: #ff0084;
+  font-size: 20px;
+  z-index: 15;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.fav-icon:hover{
+  transform: scale(1.3);
+}
+
+.product {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: stretch;
+  position: relative;
+  background-color: white;
+}
+
+img {
+  height: 200px;
+  padding: 15px;
+}
+
+.product-image {
+  margin-bottom: auto;
+  margin-top: auto;
+  max-width: 280px;
+  object-fit: contain;
+}
+
+.product-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 16px;
+  white-space: nowrap;
+  color: white;
+}
+
+.title-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 145, 220, 0.7);
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  height: 50px;
+}
+
+.item-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.item-title {
+  font-size: 22px;
+  margin-left: 40px;
+  margin-top: 40px;
+  color: #0091dc;
+}
+
+.item-container-child {
+  position: absolute;
+  top: 12%;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  align-items: center;
+}
+.item-image {
+  right: 2%;
+  width: 20%;
+  height: fit-content;
+  padding: 30px;
+  background-color: white;
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
+}
+
+.description-container {
+  width: 90%;
+  text-align: center;
+}
+
+.item-description {
+  font-size: 16px;
+  color: #212727;
+  font-weight: 500;
+  margin-top: 45px;
+  padding-left: 5%;
+  line-height: 1.6;
+  padding-right: 30px;
+  text-align: justify;
+}
+
+.product-price {
+  position: absolute;
+  left: 50%;
+  font-size: 18px;
+  font-weight: 700;
+  transform: translate(-50%);
+  color: #ff0084;
+}
+
+.back-btn {
+  display: flex;
+  margin-top: 55px;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 180px;
+  height: 35px;
+  font-size: 18px;
+  font-weight: bold;
+  border: 2px solid #0091dc;
+  color: #0091dc;
+}
+
+.btn:hover {
+  cursor: pointer;
+  background-color: rgba(255, 0, 132, 0.7);
+  border: 2px solid #ff0084;
+  color: white;
+}
