@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 
 export default function ProductDetails() {
   const [product, setProduct] = useState([]);
-  const [error, setError] = useState('');
+  const [error, setError] = useState(false);
   const [response, setResponse] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const { id } = useParams();
@@ -17,7 +17,7 @@ export default function ProductDetails() {
         setProduct(product);
       } catch (error) {
         setError(error);
-        setIsLoading(true);
+        setIsLoading(false);
       }
     })();
   }, [url]);
