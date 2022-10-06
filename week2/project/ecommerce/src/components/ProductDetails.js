@@ -11,6 +11,7 @@ export default function ProductDetails() {
   useEffect(() => {
     (async () => {
       try {
+        setIsLoading(true);
         const response = await fetch(url);
         setResponse(response);
         const product = await response.json();

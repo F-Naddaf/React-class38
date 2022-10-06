@@ -16,13 +16,14 @@ const ProductsList = () => {
   useEffect(() => {
     (async () => {
       try {
+        setIsLoading(true);
         const data = await fetch(url);
         const products = await data.json();
         setProducts(products);
         setIsLoading(false);
       } catch (error) {
         setError(true);
-        setIsLoading(true);
+        setIsLoading(false);
       }
     })();
   }, [url]);
