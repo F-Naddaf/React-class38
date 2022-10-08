@@ -1,0 +1,30 @@
+.nav {
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+  width: 100%;
+  background-color: #1e1e22;
+  box-shadow: 2px 2px 10px 1px rgb(0, 0, 0, 0.5);
+}
+
+.header-logo {
+  margin-left: 30px;
+}
+
+.exchange-section {
+  border: 1px solid white;
+  background-color: #1a1a1a;
+  color: #f5c518;
+  width: 80px;
+  height: 30px;
+  padding: 5px;
+  margin-right: 30px;
+  border-radius: 7px;
+}
