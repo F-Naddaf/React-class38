@@ -1,0 +1,49 @@
+.about-container {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 5% auto;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.info-container {
+  margin-top: 10%;
+}
+
+.info-about {
+  font-size: 16px;
+  word-spacing: 5px;
+  letter-spacing: 1px;
+  line-height: 1.6;
+  color: white;
+  padding: 10px;
+}
+
+.about-btn-container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5%;
+}
+
+.about-back-btn {
+  width: 400px;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  color: #1a1a1a;
+  background-color: #f5c518;
+}
+
+.about-back-btn:hover {
+  cursor: pointer;
+}

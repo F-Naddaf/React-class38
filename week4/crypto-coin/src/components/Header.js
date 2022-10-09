@@ -12,19 +12,31 @@ const Header = () => {
         <Link className="page-link" to="/">
           <img className="header-logo" src={Logo} alt="Logo" width={'150px'} />
         </Link>
-        <select
-          className="exchange-section"
-          value={currency}
-          id="currency"
-          onChange={(e) => setCurrency(e.target.value)}
-        >
-          <option className="usd" value={'USD'}>
-            $ USD
-          </option>
-          <option className="euro" value={'EUR'}>
-            € EUR
-          </option>
-        </select>
+        <div className="nav-right">
+          <div className="about-link">
+            <Link className="links" to="/about">
+              About
+            </Link>
+          </div>
+          <div className="favorite-link">
+            <Link className="links" to="/favorite">
+              Favorite
+            </Link>
+          </div>
+          <select
+            className="exchange-section"
+            value={currency}
+            id="currency"
+            onChange={(e) => setCurrency(e.target.value)}
+          >
+            <option className="usd" value={'USD'}>
+              $ USD
+            </option>
+            <option className="euro" value={'EUR'}>
+              € EUR
+            </option>
+          </select>
+        </div>
       </div>
     </nav>
   );
