@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { CryptoContext } from '../context/CryptoContext';
 import ReactHtmlParser from 'react-html-parser';
 import './Coin.css';
@@ -33,7 +33,6 @@ const Coin = () => {
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currency]);
-  // console.log('coin', coin);
   return (
     <>
       <Header />
@@ -75,7 +74,12 @@ const Coin = () => {
                 M
               </h4>
             </div>
-            <button className="favorite-btn">Add to favorite</button>
+            <Link className="coin-page-favorite-link" to='/'>
+              <button className="coin-page-favorite-btn">Add to favorite</button>
+            </Link>
+            <Link className="coin-page-back-link" to="/">
+              <button className="coin-page-back-btn">Back to home</button>
+            </Link>
           </div>
           <div className="chart">
             <img

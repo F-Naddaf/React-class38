@@ -50,20 +50,46 @@ h4 {
   padding: 10px 20px;
 }
 
-.favorite-btn {
+.coin-page-favorite-link {
   width: 100%;
-  height: 5%;
-  background-color: green;
-  border: none;
-  font-size: 18px;
-  font-weight: bold;
-  color: white;
-  margin-top: 40px;
-  border-radius: 7px;
 }
 
-.favorite-btn:hover {
+.coin-page-favorite-btn {
+  width: 100%;
+  padding: 7px;
+  border-radius: 7px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  color: white;
+  background-color: green;
+  margin-top: 40px;
+}
+
+.coin-page-favorite-btn:hover {
   cursor: pointer;
   background-color: rgb(0, 95, 0);
   color: rgb(207 207 207);
+}
+
+.coin-page-back-link {
+  width: 100%;
+}
+
+.coin-page-back-btn {
+  width: 100%;
+  padding: 7px;
+  border-radius: 7px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  color: #f5c518;
+  border: 1px solid #f5c518;
+  background-color: #1a1a1a;
+}
+
+.coin-page-back-btn:hover {
+  color: #1a1a1a;
+  background-color: #f5c518;
+  cursor: pointer;
 }

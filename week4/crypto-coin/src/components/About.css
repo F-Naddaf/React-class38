@@ -35,15 +35,19 @@
 
 .about-back-btn {
   width: 400px;
-  padding: 5px;
+  padding: 7px;
   border-radius: 5px;
   font-size: 16px;
   font-weight: bold;
   border: none;
-  color: #1a1a1a;
-  background-color: #f5c518;
+  color: #f5c518;
+  border: 1px solid #f5c518;
+  background-color: #1a1a1a;
 }
 
 .about-back-btn:hover {
+  color: #1a1a1a;
+  border: none;
+  background-color: #f5c518;
   cursor: pointer;
 }
