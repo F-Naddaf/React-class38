@@ -10,6 +10,10 @@ const CoinsList = () => {
   const [error, setError] = useState(null);
   const [search, setSearch] = useState('');
 
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  }
+
   useEffect(() => {
     (async () => {
       try {
@@ -68,7 +72,7 @@ const CoinsList = () => {
         const profit = coin.price_change_percentage_24h >= 0;
         return (
           <Link className="coin-desc" to={`/coin/${coin.id}`} key={coin.id}>
-            <div className="row" id="dd">
+            <div className="row" id="row-style">
               <div className="coin-logo">
                 <img className="table-image" src={coin.image} alt={coin.name} />
                 <div className="coin-name-container">
@@ -78,7 +82,7 @@ const CoinsList = () => {
               </div>
             </div>
             <div className="row">
-              {symbol} {coin.current_price.toFixed(2)}
+              {symbol} {numberWithCommas(coin.current_price.toFixed(2))}
             </div>
             <div
               className="row"
@@ -89,7 +93,7 @@ const CoinsList = () => {
               {profit && '+'} {coin.price_change_percentage_24h.toFixed(2)}%
             </div>
             <div className="row">
-              {symbol} {coin.market_cap.toString().slice(0, -6)} M
+              {symbol} {numberWithCommas(coin.market_cap.toString().slice(0, -6))} M
             </div>
           </Link>
         );

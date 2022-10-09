@@ -126,12 +126,11 @@
   .coin-name-container {
     margin-left: -20px;
   }
-  #dd {
+  #row-style {
     display: flex;
     justify-content: left;
     padding-left: 50px;
-    /* margin-left: 50px; */
-  } 
+  }
   .table-content td {
     padding: 20px 10px;
   }

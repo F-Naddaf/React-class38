@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { CryptoContext } from '../context/CryptoContext';
+import ReactHtmlParser from 'react-html-parser';
 import './Coin.css';
 import Header from './Header';
 
@@ -10,6 +11,10 @@ const Coin = () => {
   const [error, setError] = useState(null);
   const [coin, setCoin] = useState(null);
   const { currency, symbol } = useContext(CryptoContext);
+
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  }
 
   useEffect(() => {
     (async () => {
@@ -28,6 +33,7 @@ const Coin = () => {
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currency]);
+  // console.log('coin', coin);
   return (
     <>
       <Header />
@@ -42,11 +48,45 @@ const Coin = () => {
         </div>
       )}
       {coin && (
-        <>
-          <img src={coin.image.large} alt={coin.name} />
-          <div className="para">{coin.symbol}</div>
-          <div className="para">{}{coin.description.en}</div>
-        </>
+        <div className="page-container">
+          <div className="coin-detail">
+            <img
+              className="coin-page-image"
+              src={coin.image.large}
+              alt={coin.name}
+            />
+            <h3 className="coin-page-name">{coin.id}</h3>
+            <p className="coin-page-desc">
+              {ReactHtmlParser(coin.description.en.split('. ')[0])}
+            </p>
+            <div className="coin-page-info">
+              <h4>Rank: {coin.market_cap_rank}</h4>
+              <h4>
+                Current Price: {symbol}{' '}
+                {coin.market_data.current_price[currency.toLowerCase()]}
+              </h4>
+              <h4>
+                Market Cap: {symbol}{' '}
+                {numberWithCommas(
+                  coin.market_data.market_cap[currency.toLowerCase()]
+                    .toString()
+                    .slice(0, -6),
+                )}
+                M
+              </h4>
+            </div>
+            <button className="favorite-btn">Add to favorite</button>
+          </div>
+          <div className="chart">
+            <img
+              className="coin-page-image"
+              src={coin.image.large}
+              alt={coin.name}
+            />
+            <div className="para">{coin.symbol}</div>
+            <div className="para"></div>
+          </div>
+        </div>
       )}
       {/* <div className="para">{coin.localization.en}</div> */}
       {/* <p className="para">Coin</p> */}
