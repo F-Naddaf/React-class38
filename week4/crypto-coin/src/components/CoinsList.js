@@ -4,7 +4,7 @@ import { CryptoContext } from '../context/CryptoContext';
 import './CoinsList.css';
 
 const CoinsList = () => {
-  const { currency } = useContext(CryptoContext);
+  const { currency, symbol } = useContext(CryptoContext);
   const [coins, setCoins] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -15,7 +15,7 @@ const CoinsList = () => {
       try {
         setIsLoading(true);
         const response = await fetch(
-          `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&order=market_cap_desc&per_page=100&page=1&sparkline=true`,
+          `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&order=market_cap_desc&per_page=100&page=1&sparkline=false`,
         );
         const coins = await response.json();
         setCoins(coins);
@@ -27,13 +27,13 @@ const CoinsList = () => {
     })();
   }, [currency]);
 
-  // const handleSearch = () => {
-  //   return coins.filter(
-  //     (coin) =>
-  //       coin.name.toLowerCase().includes(search) ||
-  //       coin.symbol.toLowerCase().includes(search),
-  //   );
-  // };
+  const handleSearch = () => {
+    return coins.filter(
+      (coin) =>
+        coin.name.toLowerCase().includes(search) ||
+        coin.symbol.toLowerCase().includes(search),
+    );
+  };
 
   return (
     <div className="CoinsList">
@@ -58,25 +58,42 @@ const CoinsList = () => {
           <p className="loading">Loading ...</p>
         </div>
       )}
-      (
-      <table className="table">
-        <th className="coins-table">
-          <tr>Coin</tr>
-          <tr>Price</tr>
-          <tr>24h Change</tr>
-          <tr>Market Cap</tr>
-        </th>
-        {coins.map((coin) => {
-          return (
-            <td>
-              <Link>
-                <tr>{coin.symbol}</tr>
-              </Link>
-            </td>
-          );
-        })}
-      </table>
-      )
+      <div className="table-head">
+        <div className="head-title">Coin</div>
+        <div className="head-title">Price</div>
+        <div className="head-title">24h Change</div>
+        <div className="head-title">Market CaP</div>
+      </div>
+      {handleSearch().map((coin) => {
+        const profit = coin.price_change_percentage_24h >= 0;
+        return (
+          <Link className="coin-desc" to={`/coin/${coin.id}`} key={coin.id}>
+            <div className="row" id="dd">
+              <div className="coin-logo">
+                <img className="table-image" src={coin.image} alt={coin.name} />
+                <div className="coin-name-container">
+                  <span className="coin-table-symbol">{coin.symbol}</span>
+                  {coin.name}
+                </div>
+              </div>
+            </div>
+            <div className="row">
+              {symbol} {coin.current_price.toFixed(2)}
+            </div>
+            <div
+              className="row"
+              style={{
+                color: profit > 0 ? 'rgb(14, 203, 129)' : 'red',
+              }}
+            >
+              {profit && '+'} {coin.price_change_percentage_24h.toFixed(2)}%
+            </div>
+            <div className="row">
+              {symbol} {coin.market_cap.toString().slice(0, -6)} M
+            </div>
+          </Link>
+        );
+      })}
     </div>
   );
 };

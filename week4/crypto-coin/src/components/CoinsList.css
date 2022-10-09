@@ -1,8 +1,11 @@
 .CoinsList {
   display: flex;
+  position: absolute;
+  top: 80%;
   flex-direction: column;
   align-items: center;
   width: 100%;
+  padding-bottom: 90px;
 }
 
 .type-graph {
@@ -21,6 +24,7 @@
   padding: 10px;
   border: 1px solid rgb(128, 128, 128);
   background-color: #1a1a1a;
+  color: white;
 }
 
 .loading-coins-table {
@@ -32,10 +36,121 @@
   height: 30px;
 }
 
-.table {
+.table-head {
   display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin-top: 5%;
+  background-color: #f5c518;
 }
 
-.coins-table {
-  color: white;
+.head-title {
+  color: #1a1a1a;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px 20px;
+  width: 25%;
+  text-align: center;
+}
+
+.coin-desc {
+  display: flex;
+  align-items: center;
+  width: 80%;
+  border-bottom: 1px solid rgb(128, 128, 128);
+  padding: 20px 20px;
+  justify-content: space-between;
+}
+
+.coin-desc:hover {
+  background-color: #0a0a0a;
+}
+
+.row {
+  display: flex;
+  width: 25%;
+  justify-content: center;
+  align-items: center;
+}
+
+.coin-logo {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.table-image {
+  width: 20%;
+}
+
+.coin-name-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+}
+
+.coin-table-symbol {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+@media (max-width: 700px) {
+  .CoinsList {
+    top: 100%;
+  }
+  .table-image {
+    display: none;
+  }
+  .table-content {
+    width: 100%;
+  }
+  .table-content th {
+    padding: 20px 10px;
+  }
+  .table-content td {
+    padding: 20px 10px;
+  }
+}
+
+@media (min-width: 700px) and (max-width: 1280px) {
+  .CoinsList {
+    top: 120%;
+  }
+  .table-image {
+    display: none;
+  }
+  .table-head,
+  .coin-desc {
+    width: 100%;
+  }
+  .coin-name-container {
+    margin-left: -20px;
+  }
+  #dd {
+    display: flex;
+    justify-content: left;
+    padding-left: 50px;
+    /* margin-left: 50px; */
+  } 
+  .table-content td {
+    padding: 20px 10px;
+  }
+}
+
+@media (max-width: 500px) {
+  .CoinsList {
+    top: 120%;
+  }
+  .table-image {
+    display: none;
+  }
+  .table-content {
+    width: 100%;
+  }
+  .table-content th {
+    padding: 20px 10px;
+  }
+  .table-content td {
+    padding: 20px 10px;
+  }
 }

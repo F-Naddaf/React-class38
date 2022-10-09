@@ -10,7 +10,7 @@ const Header = () => {
     <nav className="nav">
       <div className="header-nav">
         <Link className="page-link" to="/">
-          <img className="header-logo" src={Logo} alt="Logo" width={'180px'} />
+          <img className="header-logo" src={Logo} alt="Logo" width={'150px'} />
         </Link>
         <select
           className="exchange-section"
