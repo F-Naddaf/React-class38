@@ -3,9 +3,9 @@ import { Line } from 'react-chartjs-2';
 import { CryptoContext } from '../context/CryptoContext';
 
 const CoinChart = ({ coin }) => {
-  const url = (id, days = 365, currency) =>
-    `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=${currency}&days=${days}`;
-  const { currency } = useContext(CryptoContext);
+  const { id } = coin;
+  const currency = useContext(CryptoContext);
+  console.log(currency);
   const [dataHistory, setDataHistory] = useState();
   const [days, setdays] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
@@ -15,24 +15,22 @@ const CoinChart = ({ coin }) => {
     (async () => {
       try {
         setIsLoading(true);
-        const response = await fetch(url(coin.id, days, currency));
+        const response = await fetch(
+          `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=${currency}&days=${days}`,
+        );
         const data = await response.json();
-        // console.log('data', data);
         setDataHistory(data.prices);
         setIsLoading(false);
-        // console.log('data', data);
       } catch (error) {
         setError(error);
         setIsLoading(false);
       }
     })();
   }, [days]);
-  // const labels = dataHistory[0];
-  // console.log('labels', labels);
-  // console.log('dataHistory', dataHistory);
+
   return (
     <>
-      {/* {error && (
+      {error && (
         <div div className="error-container">
           <p className="error-message">Server responds with error 404!</p>
         </div>
@@ -55,7 +53,7 @@ const CoinChart = ({ coin }) => {
             }),
           }}
         ></Line>
-      )} */}
+      )}
     </>
   );
 };
