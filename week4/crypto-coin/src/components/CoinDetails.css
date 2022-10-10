@@ -54,7 +54,7 @@ h4 {
   width: 100%;
 }
 
-.coin-page-favorite-btn {
+.add-to-favorite-btn {
   width: 100%;
   padding: 7px;
   border-radius: 7px;
@@ -66,9 +66,27 @@ h4 {
   margin-top: 40px;
 }
 
-.coin-page-favorite-btn:hover {
+.remove-from-favorite-btn {
+  width: 100%;
+  padding: 7px;
+  border-radius: 7px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  color: white;
+  background-color: red;
+  margin-top: 40px;
+}
+
+.add-to-favorite-btn:hover {
   cursor: pointer;
   background-color: rgb(0, 95, 0);
+  color: rgb(207 207 207);
+}
+
+.remove-from-favorite-btn:hover {
+  cursor: pointer;
+  background-color: rgb(196, 1, 1);
   color: rgb(207 207 207);
 }
 

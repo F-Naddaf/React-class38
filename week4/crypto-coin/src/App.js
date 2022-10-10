@@ -1,13 +1,13 @@
-import './App.css';
-import './App.css';
-import Home from './pages/Home';
+// import './App.css';
+// import './App.css';
+// import Home from './pages/HomePage';
 
-function App() {
-  return (
-    <div className="app">
-      <Home />
-    </div>
-  );
-}
+// function App() {
+//   return (
+//     <div className="app">
+//       <Home />
+//     </div>
+//   );
+// }
 
-export default App;
+// export default App;

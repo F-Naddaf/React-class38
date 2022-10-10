@@ -2,10 +2,12 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { CryptoContext } from '../context/CryptoContext';
 import ReactHtmlParser from 'react-html-parser';
-import './Coin.css';
+import './CoinDetails.css';
 import Header from './Header';
+import CoinChart from './CoinChart';
+import FavoriteCoin from './FavoriteCoin';
 
-const Coin = () => {
+const CoinDetails = () => {
   const { id } = useParams();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -74,28 +76,18 @@ const Coin = () => {
                 M
               </h4>
             </div>
-            <Link className="coin-page-favorite-link" to='/'>
-              <button className="coin-page-favorite-btn">Add to favorite</button>
-            </Link>
+            <FavoriteCoin coin={coin} />
             <Link className="coin-page-back-link" to="/">
               <button className="coin-page-back-btn">Back to home</button>
             </Link>
           </div>
           <div className="chart">
-            <img
-              className="coin-page-image"
-              src={coin.image.large}
-              alt={coin.name}
-            />
-            <div className="para">{coin.symbol}</div>
-            <div className="para"></div>
+            <CoinChart coin={coin} />
           </div>
         </div>
       )}
-      {/* <div className="para">{coin.localization.en}</div> */}
-      {/* <p className="para">Coin</p> */}
     </>
   );
 };
 
-export default Coin;
+export default CoinDetails;

@@ -1,23 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+import HomePage from './pages/HomePage';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Coin from './components/Coin';
+import Coin from './components/CoinDetails';
 import { CryptoProvider } from './context/CryptoContext';
-import About from './components/About';
-import Favorite from './components/Favorite';
+import About from './pages/AboutPage';
+import { FavoriteProvider } from './context/FavoriteContext';
+import FavoritePage from './pages/FavoritePage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Router>
     <CryptoProvider>
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/favorite" element={<Favorite />} />
-        <Route path="/coin/:id" element={<Coin />} />
-      </Routes>
+      <FavoriteProvider>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/favorite" element={<FavoritePage />} />
+          <Route path="/coin/:id" element={<Coin />} />
+        </Routes>
+      </FavoriteProvider>
     </CryptoProvider>
   </Router>,
 );
