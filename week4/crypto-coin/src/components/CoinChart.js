@@ -1,4 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
+import {
+  AreaChart,
+  Area,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+} from 'recharts';
 
 import { CryptoContext } from '../context/CryptoContext';
 import '../style/CoinChart.css';
@@ -27,6 +36,7 @@ const CoinChart = ({ coin }) => {
       }
     })();
   }, [days]);
+  console.log(dataHistory);
 
   return (
     <div className="chart">
@@ -41,12 +51,22 @@ const CoinChart = ({ coin }) => {
         </div>
       )}
       {dataHistory &&
-        dataHistory.map((price) => {
+        dataHistory.map((price, index) => {
           const [timeStamp, p] = price;
-          return {
-            Date: timeStamp,
-            price: p,
-          };
+          return (
+            <ResponsiveContainer width="70%" height={500} key={index}>
+              <AreaChart
+                data={price}
+                options={{
+                  maintainAspectRatio: false,
+                }}
+              >
+                <Area dataKey={timeStamp} stroke="#2451B7" />
+                <XAxis dataKey={timeStamp} color="white" className="X-line"/>
+                <YAxis dataKey={p} />
+              </AreaChart>
+            </ResponsiveContainer>
+          );
         })}
     </div>
   );
