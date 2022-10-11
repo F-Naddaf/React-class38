@@ -8,11 +8,9 @@ All this information are provided from most popular and famous website, which is
 
 ## 2. Link and Preview
 
-In this App I have followed the styling of [IMDB](https://www.imdb.com/)</br>
-
 ![App view](./crypto-coin/assets/Laptop-and-mobile.jpg)
-Project repo is available at [Crypto Coin Repo](https://github.com/F-Naddaf/React-class38/tree/Fadi-React-W4/week4/crypto-coin)</br>
 
+In this App I have followed the styling of [IMDB](https://www.imdb.com/)</br>
 Project link is available at [Crypto Coin App](https://github.com/F-Naddaf/React-class38/tree/Fadi-React-W4/week4/crypto-coin)
 
 ## 3. App Folder Structure
