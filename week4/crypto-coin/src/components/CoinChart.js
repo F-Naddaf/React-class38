@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 
 import { CryptoContext } from '../context/CryptoContext';
-import './CoinChart.css';
+import '../style/CoinChart.css';
 
 const CoinChart = ({ coin }) => {
   const { id } = coin;

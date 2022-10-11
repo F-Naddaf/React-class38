@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import { CryptoContext } from '../context/CryptoContext';
 import { FavoriteContext } from '../context/FavoriteContext';
-import './FavoritePage.css';
+import '../style/FavoritePage.css';
 
 const FavoritePage = () => {
   const { currency, symbol } = useContext(CryptoContext);

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CryptoContext } from '../context/CryptoContext';
-import './TrendingCoins.css';
+import '../style/TrendingCoins.css';
 
 const TrendingCoins = () => {
   const [isLoading, setIsLoading] = useState(false);

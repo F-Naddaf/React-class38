@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { CryptoContext } from '../context/CryptoContext';
 import Logo from '../image/Logo.png';
-import './Header.css';
+import '../style/Header.css';
 
 const Header = () => {
   const { currency, setCurrency } = useContext(CryptoContext);

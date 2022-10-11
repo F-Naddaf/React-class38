@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CryptoContext } from '../context/CryptoContext';
-import './CoinsList.css';
+import '../style/CoinsList.css';
 
 const CoinsList = () => {
   const { currency, symbol } = useContext(CryptoContext);
@@ -93,7 +93,8 @@ const CoinsList = () => {
               {profit && '+'} {coin.price_change_percentage_24h.toFixed(2)}%
             </div>
             <div className="row">
-              {symbol} {numberWithCommas(coin.market_cap.toString().slice(0, -6))} M
+              {symbol}{' '}
+              {numberWithCommas(coin.market_cap.toString().slice(0, -6))} M
             </div>
           </Link>
         );

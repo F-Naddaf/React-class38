@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { CryptoContext } from '../context/CryptoContext';
 import ReactHtmlParser from 'react-html-parser';
-import './CoinDetails.css';
+import '../style/CoinDetails.css';
 import Header from './Header';
 import {
   AreaChart,

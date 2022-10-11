@@ -1,6 +1,6 @@
 import React from 'react';
 import bannerLogo from '../image/banner-logo.png';
-import './Banner.css';
+import '../style/Banner.css';
 import TrendingCoins from './TrendingCoins';
 
 const Banner = () => {
