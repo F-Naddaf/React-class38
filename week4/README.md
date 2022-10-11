@@ -10,7 +10,7 @@ All this information are provided from most popular and famous website, which is
 
 ![App view](./crypto-coin/assets/Laptop-and-mobile.jpg)
 
-In this App I have followed the styling of [IMDB](https://www.imdb.com/). All the styling was make my css only without using Material UI</br>
+In this App I have followed the styling of [IMDB](https://www.imdb.com/). All the styling was made by css only without using Material UI</br>
 Project link is available at [Crypto Coin App](https://github.com/F-Naddaf/React-class38/tree/Fadi-React-W4/week4/crypto-coin)
 
 ## 3. App Folder Structure
