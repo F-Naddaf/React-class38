@@ -46,6 +46,7 @@
 .about-link:hover,
 .favorite-link:hover {
   border-bottom: 2px solid #f5c518;
+  background-color: #0a0a0a;
 }
 
 .exchange-section {

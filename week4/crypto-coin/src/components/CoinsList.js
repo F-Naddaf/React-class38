@@ -103,14 +103,3 @@ const CoinsList = () => {
 };
 
 export default CoinsList;
-
-
-// {dataHistory && (
-//   <Line
-//     data={{
-//       labels: dataHistory.map((coin) => {
-//         return new Date(coin[0]);
-//       }),
-//     }}
-//   ></Line>
-// )}

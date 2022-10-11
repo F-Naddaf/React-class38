@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Line } from 'react-chartjs-2';
+
 import { CryptoContext } from '../context/CryptoContext';
+import './CoinChart.css';
 
 const CoinChart = ({ coin }) => {
   const { id } = coin;
-  const currency = useContext(CryptoContext);
-  console.log(currency);
+  const { currency } = useContext(CryptoContext);
   const [dataHistory, setDataHistory] = useState();
   const [days, setdays] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
@@ -29,7 +29,7 @@ const CoinChart = ({ coin }) => {
   }, [days]);
 
   return (
-    <>
+    <div className="chart">
       {error && (
         <div div className="error-container">
           <p className="error-message">Server responds with error 404!</p>
@@ -40,21 +40,15 @@ const CoinChart = ({ coin }) => {
           <p className="loading">Loading ...</p>
         </div>
       )}
-      {dataHistory && (
-        <Line
-          data={{
-            labels: dataHistory.map((coin) => {
-              let date = new Date(coin[0]);
-              let time =
-                date.getHours() > 12
-                  ? `${date.getHours() - 12}:${date.getMinutes()} PM`
-                  : `${date.getHours()}:${date.getMinutes()} AM`;
-              return days === 1 ? time : date.toLocaleDateString();
-            }),
-          }}
-        ></Line>
-      )}
-    </>
+      {dataHistory &&
+        dataHistory.map((price) => {
+          const [timeStamp, p] = price;
+          return {
+            Date: timeStamp,
+            price: p,
+          };
+        })}
+    </div>
   );
 };
 

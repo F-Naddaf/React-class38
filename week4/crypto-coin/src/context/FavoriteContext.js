@@ -1,9 +1,15 @@
-import React, { useState, createContext } from 'react';
+import React, { useState, createContext, useEffect } from 'react';
 
 export const FavoriteContext = createContext();
 
 export const FavoriteProvider = (props) => {
-  const [favoriteCoins, setFavoriteCoins] = useState([1, 2, 3]);
+  const [favoriteCoins, setFavoriteCoins] = useState(
+    JSON.parse(localStorage.getItem('favoriteCoins')) || [],
+  );
+  useEffect(() => {
+    localStorage.setItem('favoriteCoins', JSON.stringify(favoriteCoins));
+  }, [favoriteCoins]);
+
   const addToFavorite = (coin) => {
     const filteredCoin = favoriteCoins.filter((e) => coin.id === e.id);
     if (filteredCoin.length === 0) {

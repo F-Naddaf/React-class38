@@ -1,41 +1,69 @@
 import React, { useContext } from 'react';
+import ReactHtmlParser from 'react-html-parser';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
+import { CryptoContext } from '../context/CryptoContext';
 import { FavoriteContext } from '../context/FavoriteContext';
+import './FavoritePage.css';
 
 const FavoritePage = () => {
-  const { favoriteCoins } = useContext(FavoriteContext);
+  const { currency, symbol } = useContext(CryptoContext);
+  const { favoriteCoins, removeFromFavorite } = useContext(FavoriteContext);
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  }
   return (
     <>
       <Header />
-      <ul>
+      <div className="favorite-coins-container">
         {favoriteCoins.length > 0 ? (
-          favoriteCoins.map((coin) => (
-            <li className="coin-card" key={coin.id}>
-              {favoriteCoins(coin)}
-              <Link to={`/coin/${coin.id}`}>
-                <div className="product">
-                  <img
-                    className="coin-image"
-                    src={coin.image}
-                    alt={coin.title}
-                  />
-                  <div className="title-container">
-                    <p className="coin-title">
-                      <strong>More about:</strong> {coin.title}
+          favoriteCoins.map((coin) => {
+            return (
+              <div className="container" key={coin.id}>
+                <Link to={`/coin/${coin.id}`}>
+                  <div className="favorite-coin-details">
+                    <img
+                      className="favorite-coin-image"
+                      src={coin.image.large}
+                      alt={coin.id}
+                    />
+                    <h3 className="favorite-coin-name">{coin.id}</h3>
+                    <p className="favorite-coin-info">
+                      Current Price: {symbol}{' '}
+                      {coin.market_data.current_price[currency.toLowerCase()]}
+                    </p>
+                    <p className="favorite-coin-info">
+                      Market Cap: {symbol}{' '}
+                      {numberWithCommas(
+                        coin.market_data.market_cap[currency.toLowerCase()]
+                          .toString()
+                          .slice(0, -6),
+                      )}
+                      M
+                    </p>
+                    <p className="favorite-coin-desc">
+                      Descriptions:{' '}
+                      {ReactHtmlParser(coin.description.en.split('. ')[0])}
                     </p>
                   </div>
-                </div>
-              </Link>
-            </li>
-          ))
+                </Link>
+                <button
+                  className="favorite-page-remove-btn"
+                  onClick={() => removeFromFavorite(coin.id)}
+                >
+                  Remove from favorite
+                </button>
+              </div>
+            );
+          })
         ) : (
-          <h2 className="favorite-message">
-            You don't Have any coin in your favorites!
-          </h2>
+          <div>
+            <h2 className="favorite-message">
+              You don't Have any coin in your favorite!
+            </h2>
+          </div>
         )}
-      </ul>
-      <div>FavoritePage</div>
+      </div>
     </>
   );
 };
