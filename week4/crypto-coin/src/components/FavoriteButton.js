@@ -4,7 +4,6 @@ import { FavoriteContext } from '../context/FavoriteContext';
 const FavoriteButton = ({ coin }) => {
   const { favoriteCoins, addToFavorite, removeFromFavorite } =
     useContext(FavoriteContext);
-  console.log(favoriteCoins);
 
   const filteredCoin = favoriteCoins.filter((e) => coin.id === e.id);
   return filteredCoin.length > 0 ? (

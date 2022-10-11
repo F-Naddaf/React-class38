@@ -42,6 +42,7 @@
   width: 80%;
   margin-top: 5%;
   background-color: #f5c518;
+  align-items: center;
 }
 
 .head-title {
@@ -143,13 +144,31 @@
   .table-image {
     display: none;
   }
+  .search-field {
+    width: 80%;
+  }
   .table-content {
     width: 100%;
+  }
+  .head-title {
+    font-size: 16px;
+  }
+  .row {
+    font-size: 14px;
   }
   .table-content th {
     padding: 20px 10px;
   }
   .table-content td {
     padding: 20px 10px;
+  }
+  .table-head,
+  .coin-desc {
+    width: 100%;
+  }
+  #row-style {
+    display: flex;
+    justify-content: left;
+    margin-left: -10px;
   }
 }
