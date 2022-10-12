@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import ReactHtmlParser from 'react-html-parser';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import { CryptoContext } from '../context/CryptoContext';
@@ -42,8 +41,7 @@ const FavoritePage = () => {
                       M
                     </p>
                     <p className="favorite-coin-desc">
-                      Descriptions:{' '}
-                      {ReactHtmlParser(coin.description.en.split('. ')[0])}
+                      Descriptions: {coin.description.en.split('. ')[0]}
                     </p>
                   </div>
                 </Link>

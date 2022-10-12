@@ -4,19 +4,20 @@ import {
   Area,
   XAxis,
   YAxis,
-  CartesianGrid,
   Tooltip,
   ResponsiveContainer,
+  CartesianGrid,
 } from 'recharts';
-
 import { CryptoContext } from '../context/CryptoContext';
+import ChartDaysData from './ChartDaysData';
 import '../style/CoinChart.css';
+import CustomTooltip from './CustomTooltip';
 
 const CoinChart = ({ coin }) => {
   const { id } = coin;
-  const { currency } = useContext(CryptoContext);
+  const { currency, symbol } = useContext(CryptoContext);
   const [dataHistory, setDataHistory] = useState();
-  const [days, setdays] = useState(1);
+  const [days, setDays] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -35,9 +36,19 @@ const CoinChart = ({ coin }) => {
         setIsLoading(false);
       }
     })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [days]);
-  console.log(dataHistory);
 
+  const chartData =
+    dataHistory == null
+      ? []
+      : dataHistory.map((price) => {
+          let [timeStamp, p] = price;
+          return {
+            time: timeStamp,
+            price: p,
+          };
+        });
   return (
     <div className="chart">
       {error && (
@@ -50,24 +61,67 @@ const CoinChart = ({ coin }) => {
           <p className="loading">Loading ...</p>
         </div>
       )}
-      {dataHistory &&
-        dataHistory.map((price, index) => {
-          const [timeStamp, p] = price;
-          return (
-            <ResponsiveContainer width="70%" height={500} key={index}>
-              <AreaChart
-                data={price}
-                options={{
-                  maintainAspectRatio: false,
-                }}
-              >
-                <Area dataKey={timeStamp} stroke="#2451B7" />
-                <XAxis dataKey={timeStamp} color="white" className="X-line"/>
-                <YAxis dataKey={p} />
-              </AreaChart>
-            </ResponsiveContainer>
-          );
-        })}
+      {chartData && (
+        <ResponsiveContainer width="100%" height="80%" >
+          <AreaChart
+            data={chartData}
+            options={{
+              maintainAspectRatio: false,
+            }}
+          >
+            <defs>
+              <linearGradient id="color" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#f5c518" stopOpacity={0.4} />
+                <stop offset="75%" stopColor="#f5c518" stopOpacity={0.05} />
+              </linearGradient>
+            </defs>
+            <Area
+              type="monotone"
+              dataKey={'price'}
+              stroke="#f5c518"
+              fill="url(#color)"
+            />
+            <XAxis
+              dataKey={'time'}
+              tick={{ fontSize: 12 }}
+              axisLine={false}
+              tickLine={false}
+              tickFormatter={(t) => {
+                let date = new Date(t);
+                let time =
+                  date.getHours() > 12
+                    ? `${date.getHours() - 12} : ${date.getMinutes()} pm`
+                    : `${date.getHours()} : ${date.getMinutes()} am`;
+                return days === 1 ? time : date.toLocaleDateString();
+              }}
+            />
+            <YAxis
+              tick={{ fontSize: 12 }}
+              axisLine={false}
+              tickLine={false}
+              tickCount={8}
+              tickFormatter={(num) => `${symbol}${num.toFixed(2)}`}
+            />
+            <Tooltip content={<CustomTooltip />} />
+            <CartesianGrid opacity={0.1} vertical={false} />
+          </AreaChart>
+        </ResponsiveContainer>
+      )}
+      <div className="days-button-container">
+        {ChartDaysData.map((day) => (
+          <button
+            type="button"
+            className="day-button"
+            key={day.value}
+            onClick={() => {
+              setDays(day.value);
+            }}
+            selected={day.value === days}
+          >
+            {day.label}
+          </button>
+        ))}
+      </div>
     </div>
   );
 };

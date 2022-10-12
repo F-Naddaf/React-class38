@@ -1,5 +1,7 @@
 .page-container {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   position: absolute;
   top: 100px;
 }
@@ -10,7 +12,7 @@
   justify-content: space-between;
   align-items: center;
   position: relative;
-  width: 30%;
+  width: 35%;
   padding: 20px;
   border-right: 1px solid grey;
 }
@@ -44,10 +46,10 @@
 }
 
 h4 {
-  font-size: 20px;
-  color: rgb(207 207 207);
-  font-weight: 700;
-  padding: 10px 20px;
+  font-size: 15px;
+  color: #f5c518;
+  font-weight: 900;
+  padding: 5px 15px;
 }
 
 .coin-page-favorite-link {
@@ -110,4 +112,51 @@ h4 {
   color: #1a1a1a;
   background-color: #f5c518;
   cursor: pointer;
+}
+
+@media (min-width: 600px) {
+  .coin-page-image {
+    height: 20%;
+  }
+  .favorite-page-remove-btn {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 500px) {
+  .page-container {
+    flex-direction: row;
+    width: 100%;
+  }
+  .coin-detail {
+    width: 100%;
+    height: 35%;
+    border-right: none;
+    border-bottom: 1px solid gray;
+  }
+  .coin-page-image {
+    height: 70px;
+  }
+  .coin-page-name {
+    font-size: 22px;
+  }
+  .coin-page-desc {
+    color: white;
+    font-size: 12px;
+    word-spacing: 0;
+    letter-spacing: 1px;
+    line-height: 1.2;
+    padding: 0;
+  }
+  h4 {
+    font-size: 12px;
+    padding: 5px 5px;
+  }
+  .add-to-favorite-btn,
+  .remove-from-favorite-btn,
+  .coin-page-back-btn {
+    font-size: 12px;
+    padding: 5px;
+    margin-top: 15px;
+  }
 }

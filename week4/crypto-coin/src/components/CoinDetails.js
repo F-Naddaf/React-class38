@@ -1,20 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { CryptoContext } from '../context/CryptoContext';
-import ReactHtmlParser from 'react-html-parser';
 import '../style/CoinDetails.css';
 import Header from './Header';
-// import {
-//   AreaChart,
-//   Area,
-//   XAxis,
-//   YAxis,
-//   CartesianGrid,
-//   Tooltip,
-// } from 'recharts';
 import FavoriteCoin from './FavoriteButton';
 import CoinChart from './CoinChart';
-// import CoinChart from './CoinChart';
 
 const CoinDetails = () => {
   const { id } = useParams();
@@ -22,7 +12,6 @@ const CoinDetails = () => {
   const [error, setError] = useState(null);
   const [coin, setCoin] = useState(null);
   const { currency, symbol } = useContext(CryptoContext);
-  // const store = CoinChart()
 
   function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
@@ -32,6 +21,7 @@ const CoinDetails = () => {
     (async () => {
       try {
         setIsLoading(true);
+        setError(false);
         const response = await fetch(
           `https://api.coingecko.com/api/v3/coins/${id}`,
         );
@@ -68,7 +58,7 @@ const CoinDetails = () => {
             />
             <h3 className="coin-page-name">{coin.id}</h3>
             <p className="coin-page-desc">
-              {ReactHtmlParser(coin.description.en.split('. ')[0])}
+              {coin.description.en.split('. ')[0]}
             </p>
             <div className="coin-page-info">
               <h4>Rank: {coin.market_cap_rank}</h4>
@@ -91,9 +81,7 @@ const CoinDetails = () => {
               <button className="coin-page-back-btn">Back to home</button>
             </Link>
           </div>
-          <div className="chart">
             <CoinChart coin={coin} />
-          </div>
         </div>
       )}
     </>

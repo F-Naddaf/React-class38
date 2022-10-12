@@ -51,7 +51,7 @@
 }
 
 .favorite-coin-desc {
-  color: white;
+  color: rgb(207 207 207);
   font-size: 14px;
   padding: 15px 15px;
   word-spacing: 2px;
@@ -78,4 +78,22 @@
 
 .favorite-message {
   color: red;
+}
+
+@media (min-width: 600px) {
+  .container {
+    width: 30%;
+  }
+  .favorite-page-remove-btn {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 500px) {
+  .container {
+    width: 40%;
+  }
+  .favorite-page-remove-btn {
+    font-size: 14px;
+  }
 }
