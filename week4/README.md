@@ -11,7 +11,7 @@ All this information are provided from most popular and famous website, which is
 ![App view](./crypto-coin/assets/Laptop-and-mobile.jpg)
 
 In this App I have followed the styling of [IMDB](https://www.imdb.com/). All the styling was made by css only without using Material UI</br>
-Project link is available at [Crypto Coin App](https://github.com/F-Naddaf/React-class38/tree/Fadi-React-W4/week4/crypto-coin)
+Project link is available at [Crypto Coin App](https://pro-crypto-coin.netlify.app/)
 
 ## 3. App Folder Structure
 
@@ -23,9 +23,11 @@ public
 src
 └── components
   └── Banner.js
+  └── ChartDaysData.js
   └── CoinChart.js
   └── CoinDetails.js
   └── CoinsList.js
+  └── CustomTooltip.js
   └── FavoriteButton.js
   └── Header.js
   └── TrendingCoins.js
@@ -43,7 +45,6 @@ src
   └── HomePage.js
 └── style
   └── AboutPage.css
-  └── App.css
   └── Banner.css
   └── CoinChart.css
   └── CoinDetails.css
@@ -53,7 +54,6 @@ src
   └── HomePage.css
   └── index.css
   └── TrendingCoins.css
-└── App.js
 └── index.js
 README.md
 ```
