@@ -1,6 +1,6 @@
 .CoinsList {
   display: flex;
-  position: absolute;
+  position: relative;
   top: 80%;
   flex-direction: column;
   align-items: center;
@@ -95,28 +95,29 @@
   font-weight: bold;
 }
 
-@media (max-width: 700px) {
-  .CoinsList {
-    top: 100%;
-  }
+@media (min-width: 900px) and (max-width: 1280px) {
   .table-image {
-    display: none;
+    width: 20%;
+    margin-right: 30px;
   }
-  .table-content {
+  .table-head,
+  .coin-desc {
     width: 100%;
   }
-  .table-content th {
-    padding: 20px 10px;
+  .coin-name-container {
+    margin-left: -20px;
+  }
+  #row-style {
+    display: flex;
+    justify-content: left;
+    padding-left: 50px;
   }
   .table-content td {
     padding: 20px 10px;
   }
 }
 
-@media (min-width: 700px) and (max-width: 1280px) {
-  .CoinsList {
-    top: 120%;
-  }
+@media (min-width: 600px) and (max-width: 900px) {
   .table-image {
     display: none;
   }
@@ -137,9 +138,9 @@
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
   .CoinsList {
-    top: 120%;
+    margin-top: 180px;
   }
   .table-image {
     display: none;
@@ -170,5 +171,11 @@
     display: flex;
     justify-content: left;
     margin-left: -10px;
+  }
+}
+
+@media (max-width: 400px) {
+  .CoinsList {
+    margin-top: 400px;
   }
 }
