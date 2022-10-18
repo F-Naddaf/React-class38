@@ -76,7 +76,6 @@ const CoinChart = ({ coin }) => {
               </linearGradient>
             </defs>
             <Area
-              type="monotone"
               dataKey={'price'}
               stroke="#f5c518"
               fill="url(#color)"
