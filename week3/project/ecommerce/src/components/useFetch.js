@@ -8,6 +8,7 @@ const useFetch = (url) => {
   useEffect(() => {
     (async () => {
       try {
+        setError(false);
         setIsLoading(true);
         const data = await fetch(url);
         const products = await data.json();

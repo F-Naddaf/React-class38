@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link, useParams } from 'react-router-dom';
-import FavoriteIcon from './FavoriteIcon';
+import { useParams } from 'react-router-dom';
+import ProductsList from './ProductsList';
 import useFetch from './useFetch';
 
 const ProductCategory = () => {
@@ -15,37 +15,19 @@ const ProductCategory = () => {
   const result = products.filter(
     (product) => product.category === getProductByCategory,
   );
-  return (
-    <>
-      <ul className="main">
-        <div className="products">
-          {error && (
-            <p className="error-message">Server responds with error 404!</p>
-          )}
-          {isLoading && <p className="loading">Loading ...</p>}
-          {result.map((product) => (
-            <li className="product-card" key={product.id}>
-              {FavoriteIcon(product)}
-              <Link to={`/product/${product.id}`}>
-                <div className="product">
-                  <img
-                    className="product-image"
-                    src={product.image}
-                    alt={product.title}
-                  />
-                  <div className="title-container">
-                    <p className="product-title">
-                      <strong>More about:</strong> {product.title}
-                    </p>
-                  </div>
-                </div>
-              </Link>
-            </li>
-          ))}
-        </div>
-      </ul>
-    </>
-  );
+  if (!category) {
+    return (
+      <>
+        <ProductsList products={products} error={error} isLoading={isLoading} />
+      </>
+    );
+  } else {
+    return (
+      <>
+        <ProductsList products={result} error={error} isLoading={isLoading} />
+      </>
+    );
+  }
 };
 
 export default ProductCategory;
